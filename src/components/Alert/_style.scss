@@ -1,0 +1,37 @@
+.alert {
+    position: relative;
+    color: #fff;
+    margin: 2rem;
+    padding: 1rem 2rem;
+    border-radius: $border-radius;
+    .title {
+        font-weight: bolder;
+    }
+    &-close-btn {
+        position: absolute;
+        cursor: pointer;
+        font-size: $font-size-base * 1.5;
+        top: 1rem;
+        right: 2rem;
+    }
+}
+
+.alert-primary {
+    @include alert-style($primary)
+}
+
+.alert-success {
+    @include alert-style($success)
+}
+
+.alert-danger {
+    @include alert-style($danger)
+}
+
+.alert-warning {
+    @include alert-style($warning)
+}
+
+.alert-default {
+    @include alert-style($gray-600,$gray-600)
+}
