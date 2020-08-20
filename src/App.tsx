@@ -10,16 +10,16 @@ import MenuItem from './components/Menx/menuItem'
 import SubMenu from './components/Menx/subMenu'
 
 import Tabs from './components/Tabs/tabs'
+import TabItem from './components/Tabs/tabItem'
 
 const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
-                <Tabs>
-                    <li>11</li>
-                    <li>11</li>
-                    <li>11</li>
-                    <li>11</li>
+                <Tabs onSelect={(index) => alert(index)}>
+                    <TabItem label='card1'>this is card one</TabItem>
+                    <TabItem label='card2'>this is card two</TabItem>
+                    <TabItem label='card3'>this is card three</TabItem>
                 </Tabs>
 
                 <Menu defaultIndex={'1'} mode='vertical' defaultOpenSubMenus={['3']}>

@@ -1,0 +1,22 @@
+.levi-tabs {
+    li {
+        list-style: none;
+    }
+    .tabList {
+        display: flex;
+        padding:0 20px;
+        border-bottom: $menu-border-width solid $menu-border-color;
+        .tabs-tab {
+            padding: 8px 0;
+            margin-right: 32px;
+            cursor: pointer;
+            &:hover,&.is-active {
+                border-bottom:3px solid $primary;
+            }
+        }
+    }
+    .tab-item {
+        // list-style: none;
+        padding:20px;
+    }
+}
