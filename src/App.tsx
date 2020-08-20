@@ -1,15 +1,38 @@
 import React from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
 // import Alert from './components/Alert/alert'
-import Menu from './components/Menu/menu'
-import MenuItem from './components/Menu/menuItem'
-import SubMenu from './components/Menu/subMenu'
+// import Menu from './components/Menu/menu'
+// import MenuItem from './components/Menu/menuItem'
+// import SubMenu from './components/Menu/subMenu'
+
+import Menu from './components/Menx/menu'
+import MenuItem from './components/Menx/menuItem'
+import SubMenu from './components/Menx/subMenu'
+
+import Tabs from './components/Tabs/tabs'
 
 const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
-                <Menu
+                <Tabs>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                    <li>11</li>
+                </Tabs>
+
+                <Menu defaultIndex={'1'} mode='vertical' defaultOpenSubMenus={['3']}>
+                    <MenuItem>menu-item-0</MenuItem>
+                    <MenuItem>menu-item-1</MenuItem>
+                    <MenuItem>menu-item-2</MenuItem>
+                    <SubMenu title='呵呵'>
+                        <MenuItem>menu-item-3-0</MenuItem>
+                        <MenuItem>menu-item-3-1</MenuItem>
+                        <MenuItem>menu-item-3-2</MenuItem>
+                    </SubMenu>
+                </Menu>
+                {/* <Menu
                     defaultIndex='0'
                     defaultOpenSubMenus={['2']}
                     mode='vertical'
@@ -25,7 +48,7 @@ const App: React.FC = () => {
                         <MenuItem>dropdown3</MenuItem>
                     </SubMenu>
                     <MenuItem>cool link3</MenuItem>
-                </Menu>
+                </Menu> */}
             </header>
         </div>
     )
