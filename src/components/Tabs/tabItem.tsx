@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { TabContext } from './tabs'
 export interface TabItemProps {
     index?: number
+    disabled?: boolean
     label: string
 }
 

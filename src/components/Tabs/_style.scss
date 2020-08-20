@@ -10,6 +10,10 @@
             padding: 8px 0;
             margin-right: 32px;
             cursor: pointer;
+            &.is-disabled {
+                color: #c6c6c6;
+                pointer-events: none;
+            }
             &:hover,&.is-active {
                 border-bottom:3px solid $primary;
             }

@@ -30,11 +30,12 @@ const Tabs: React.FC<TabsProps> = (props) => {
     }
     const renderTabList = () => {
         return React.Children.map(children, (child, index) => {
-            const classes = classNames('tabs-tab', {
-                'is-active': activeIndex === index
-            })
             const childElement = child as React.FunctionComponentElement<TabItemProps>
-            const { label } = childElement.props
+            const { label, disabled } = childElement.props
+            const classes = classNames('tabs-tab', {
+                'is-active': activeIndex === index,
+                'is-disabled': disabled
+            })
             return (
                 <li className={classes} key={index} onClick={(e) => handleClick(e, index)}>
                     {label}

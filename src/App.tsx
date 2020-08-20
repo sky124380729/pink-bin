@@ -18,7 +18,9 @@ const App: React.FC = () => {
             <header className='App-header'>
                 <Tabs onSelect={(index) => alert(index)}>
                     <TabItem label='card1'>this is card one</TabItem>
-                    <TabItem label='card2'>this is card two</TabItem>
+                    <TabItem disabled label='card2'>
+                        this is card two
+                    </TabItem>
                     <TabItem label='card3'>this is card three</TabItem>
                 </Tabs>
 
