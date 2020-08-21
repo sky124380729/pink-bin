@@ -25,7 +25,7 @@ const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
-                <Alert title='试试' type='primary'></Alert>
+                <Alert title='试试' type='primary' animation='zoom-in-top'></Alert>
                 {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
                 <Tabs onSelect={(index) => alert(index)}>
                     <TabItem label='card1'>this is card one</TabItem>
