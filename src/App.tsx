@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
 // import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
@@ -12,12 +12,16 @@ import SubMenu from './components/Menu/subMenu'
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
 
+import Transiton from './components/Transition/transition'
+import Button from './components/Button/button'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import Icon from './components/Icon/icon'
 library.add(fas)
 
 const App: React.FC = () => {
+    const [show, setShow] = useState(false)
     return (
         <div className='App'>
             <header className='App-header'>
@@ -51,6 +55,26 @@ const App: React.FC = () => {
                         <MenuItem>menu-item-3-2</MenuItem>
                     </SubMenu>
                 </Menu>
+
+                <Button
+                    size='lg'
+                    onClick={() => {
+                        setShow(!show)
+                    }}
+                >
+                    Toggle
+                </Button>
+
+                <Transiton in={show} timeout={300} animation='zoom-in-left'>
+                    <div>
+                        <p>111</p>
+                        <p>111</p>
+                        <p>111</p>
+                        <p>111</p>
+                        <p>111</p>
+                        <p>111</p>
+                    </div>
+                </Transiton>
                 {/* <Menu
                     defaultIndex='0'
                     defaultOpenSubMenus={['2']}
