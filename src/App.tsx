@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
-// import Alert from './components/Alert/alert'
+import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from './components/Menu/subMenu'
@@ -25,7 +25,8 @@ const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
-                <Icon icon='coffee' theme='danger' size='10x'></Icon>
+                <Alert title='试试' type='primary'></Alert>
+                {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
                 <Tabs onSelect={(index) => alert(index)}>
                     <TabItem label='card1'>this is card one</TabItem>
                     <TabItem disabled label='card2'>

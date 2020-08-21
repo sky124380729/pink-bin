@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Icon from '../Icon/icon'
+import Transiton from '../Transition/transition'
 import classNames from 'classnames'
 
 export type AlertType = 'success' | 'default' | 'danger' | 'warning' | 'primary'
@@ -19,18 +21,18 @@ const Alert: React.FC<AlertProps> = (props) => {
         [`alert-${type}`]: type
     })
 
-    return flag ? (
-        <div className={classes}>
-            {title && <p className='title'>{title}</p>}
-            <p className='message'>{message}</p>
-            {closeable && (
-                <span className='alert-close-btn' onClick={(e) => setFlag(false)}>
-                    ×
-                </span>
-            )}
-        </div>
-    ) : (
-        <></>
+    return (
+        <Transiton timeout={300} in={flag} animation='zoom-in-top'>
+            <div className={classes}>
+                {title && <p className='title'>{title}</p>}
+                <p className='message'>{message}</p>
+                {closeable && (
+                    <span className='alert-close-btn' onClick={(e) => setFlag(false)}>
+                        <Icon icon='times'></Icon>
+                    </span>
+                )}
+            </div>
+        </Transiton>
     )
 }
 
