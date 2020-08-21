@@ -1,21 +1,27 @@
 import React from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
 // import Alert from './components/Alert/alert'
-// import Menu from './components/Menu/menu'
-// import MenuItem from './components/Menu/menuItem'
-// import SubMenu from './components/Menu/subMenu'
+import Menu from './components/Menu/menu'
+import MenuItem from './components/Menu/menuItem'
+import SubMenu from './components/Menu/subMenu'
 
-import Menu from './components/Menx/menu'
-import MenuItem from './components/Menx/menuItem'
-import SubMenu from './components/Menx/subMenu'
+// import Menu from './components/Menx/menu'
+// import MenuItem from './components/Menx/menuItem'
+// import SubMenu from './components/Menx/subMenu'
 
 import Tabs from './components/Tabs/tabs'
 import TabItem from './components/Tabs/tabItem'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import Icon from './components/Icon/icon'
+library.add(fas)
 
 const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
+                <Icon icon='coffee' theme='danger' size='10x'></Icon>
                 <Tabs onSelect={(index) => alert(index)}>
                     <TabItem label='card1'>this is card one</TabItem>
                     <TabItem disabled label='card2'>
@@ -24,7 +30,18 @@ const App: React.FC = () => {
                     <TabItem label='card3'>this is card three</TabItem>
                 </Tabs>
 
-                <Menu defaultIndex={'1'} mode='vertical' defaultOpenSubMenus={['3']}>
+                <Menu defaultIndex={'1'} mode='vertical'>
+                    <MenuItem>menu-item-0</MenuItem>
+                    <MenuItem>menu-item-1</MenuItem>
+                    <MenuItem>menu-item-2</MenuItem>
+                    <SubMenu title='呵呵'>
+                        <MenuItem>menu-item-3-0</MenuItem>
+                        <MenuItem>menu-item-3-1</MenuItem>
+                        <MenuItem>menu-item-3-2</MenuItem>
+                    </SubMenu>
+                </Menu>
+
+                <Menu defaultOpenSubMenus={['3']}>
                     <MenuItem>menu-item-0</MenuItem>
                     <MenuItem>menu-item-1</MenuItem>
                     <MenuItem>menu-item-2</MenuItem>
