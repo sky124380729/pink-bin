@@ -9,6 +9,9 @@ type TransitionProps = CSSTransitionProps & {
     wrapper?: boolean
 }
 
+// wrapper的作用是如果包裹的内容本身含有transition，那么动画会覆盖本身的transition,导致BUG，因为transition不会被继承，
+// 所以我们可以通过外层包一个标签给他传入transition就OK了
+
 const Transition: React.FC<TransitionProps> = (props) => {
     const { children, classNames, animation, wrapper, ...restProps } = props
     return (
