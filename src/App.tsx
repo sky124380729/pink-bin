@@ -14,10 +14,11 @@ import TabItem from './components/Tabs/tabItem'
 
 import Transiton from './components/Transition/transition'
 import Button from './components/Button/button'
+import Input from './components/Input/input'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import Icon from './components/Icon/icon'
+// import Icon from './components/Icon/icon'
 library.add(fas)
 
 const App: React.FC = () => {
@@ -25,6 +26,8 @@ const App: React.FC = () => {
     return (
         <div className='App'>
             <header className='App-header'>
+                <Input style={{ width: '200px' }} icon='cocktail'></Input>
+
                 <Alert title='试试' type='primary' animation='zoom-in-top'></Alert>
                 {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
                 <Tabs onSelect={(index) => alert(index)}>
