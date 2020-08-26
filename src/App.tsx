@@ -16,6 +16,8 @@ import Transiton from './components/Transition/transition'
 import Button from './components/Button/button'
 import Input from './components/Input/input'
 
+import AutoComplete from './components/AutoComplete/autoComplete'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 // import Icon from './components/Icon/icon'
@@ -23,11 +25,19 @@ library.add(fas)
 
 const App: React.FC = () => {
     const [show, setShow] = useState(false)
+    const handleFetch = (query: string) => {
+        return fetch(`https://api.github.com/search/users?q=${query}`)
+            .then((res) => res.json())
+            .then(({ items }) => {
+                const formatItems = items.slice(0, 10).map((item: any) => ({ value: item.login, ...item }))
+                return formatItems
+            })
+    }
     return (
         <div className='App'>
             <header className='App-header'>
+                <AutoComplete value='11' fetchSuggestions={handleFetch}></AutoComplete>
                 <Input style={{ width: '200px' }} icon='cocktail'></Input>
-
                 <Alert title='试试' type='primary' animation='zoom-in-top'></Alert>
                 {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
                 <Tabs onSelect={(index) => alert(index)}>
@@ -37,7 +47,6 @@ const App: React.FC = () => {
                     </TabItem>
                     <TabItem label='card3'>this is card three</TabItem>
                 </Tabs>
-
                 <Menu defaultIndex={'1'} mode='vertical'>
                     <MenuItem>menu-item-0</MenuItem>
                     <MenuItem>menu-item-1</MenuItem>
@@ -48,7 +57,6 @@ const App: React.FC = () => {
                         <MenuItem>menu-item-3-2</MenuItem>
                     </SubMenu>
                 </Menu>
-
                 <Menu defaultOpenSubMenus={['3']}>
                     <MenuItem>menu-item-0</MenuItem>
                     <MenuItem>menu-item-1</MenuItem>
@@ -59,7 +67,6 @@ const App: React.FC = () => {
                         <MenuItem>menu-item-3-2</MenuItem>
                     </SubMenu>
                 </Menu>
-
                 <Button
                     size='lg'
                     onClick={() => {
@@ -68,7 +75,6 @@ const App: React.FC = () => {
                 >
                     Toggle
                 </Button>
-
                 <Transiton in={show} timeout={300} animation='zoom-in-left'>
                     <div>
                         <p>111</p>
