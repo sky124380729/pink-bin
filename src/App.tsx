@@ -18,6 +18,8 @@ import Input from './components/Input/input'
 
 import AutoComplete from './components/AutoComplete/autoComplete'
 
+import Select, { Option } from './components/Select/select'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 // import Icon from './components/Icon/icon'
@@ -33,10 +35,34 @@ const App: React.FC = () => {
                 return formatItems
             })
     }
+    const handleVisibleChange = (flag: boolean) => {
+        // console.log(flag)
+    }
+    const handleChange = (item: any) => {
+        console.log(item)
+    }
     return (
         <div className='App'>
             <header className='App-header'>
-                <AutoComplete value='11' fetchSuggestions={handleFetch}></AutoComplete>
+                <div style={{ display: 'flex' }}>
+                    <Select mode='multiple' onVisibleChange={handleVisibleChange} onChange={handleChange} style={{ width: '300px', marginRight: '20px' }}>
+                        <Option value='jack'>Jack</Option>
+                        <Option value='lucy'>Lucy</Option>
+                        <Option value='levi'>Levi</Option>
+                        <Option value='disabled' disabled>
+                            Disabled
+                        </Option>
+                    </Select>
+                    <Select onVisibleChange={handleVisibleChange} onChange={handleChange} style={{ width: '300px' }}>
+                        <Option value='jack'>Jack</Option>
+                        <Option value='lucy'>Lucy</Option>
+                        <Option value='disabled' disabled>
+                            Disabled
+                        </Option>
+                    </Select>
+                </div>
+
+                {/* <AutoComplete value='11' fetchSuggestions={handleFetch}></AutoComplete> */}
                 <Input style={{ width: '200px' }} icon='cocktail'></Input>
                 <Alert title='试试' type='primary' animation='zoom-in-top'></Alert>
                 {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
