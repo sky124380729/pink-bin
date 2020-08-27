@@ -37,6 +37,8 @@ const Select: FC<SelectProps> = (props) => {
     const [optionVisible, setOptionVisible] = useState(false)
     const [selectedArr, setSelectedArr] = useState<valueType[]>([])
     const componentRef = useRef<HTMLDivElement>(null)
+    //TODO: 此处创建了一个标识，通过这个我们可以只在更新时候运行effect
+    // 当然，项目中可能经常遇到这么个情况，我们可以把它创建为一个自定义hook
     const triggered = useRef(false)
     const classes = classNames('levi-select', className)
     const handleClick = (e: MouseEvent<HTMLElement>) => {
@@ -75,6 +77,9 @@ const Select: FC<SelectProps> = (props) => {
         list.splice(index, 1)
         setSelectedArr(list)
     }
+
+    //TODO: setState其实可以传一个函数，这样就可以解决这个问题啦
+
     useEffect(() => {
         onVisibleChange && triggered.current && onVisibleChange(optionVisible)
     }, [onVisibleChange, optionVisible])

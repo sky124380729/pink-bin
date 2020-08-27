@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
@@ -22,6 +22,10 @@ import Select, { Option } from './components/Select/select'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+
+import axios from 'axios'
+import Upload from './components/Upload/upload'
+
 // import Icon from './components/Icon/icon'
 library.add(fas)
 
@@ -41,9 +45,34 @@ const App: React.FC = () => {
     const handleChange = (item: any) => {
         console.log(item)
     }
+
+    const [title, setTitle] = useState('')
+    useEffect(() => {
+        axios
+            .get('https://jsonplaceholder.typicode.com/posts/1', {
+                headers: {},
+                responseType: 'json'
+            })
+            .then((resp) => {
+                setTitle(resp.data.title)
+            })
+    })
+    const handleFileChange = (file: File) => {
+        console.log(file)
+    }
     return (
         <div className='App'>
             <header className='App-header'>
+                <div style={{ width: '300px', marginBottom: '20px' }}>
+                    <Upload
+                        action='https://jsonplaceholder.typicode.com/posts'
+                        onChange={handleFileChange}
+                        onRemove={(file) => {
+                            console.log(file)
+                        }}
+                    ></Upload>
+                </div>
+
                 <div style={{ display: 'flex' }}>
                     <Select mode='multiple' onVisibleChange={handleVisibleChange} onChange={handleChange} style={{ width: '300px', marginRight: '20px' }}>
                         <Option value='jack'>Jack</Option>
@@ -62,7 +91,7 @@ const App: React.FC = () => {
                     </Select>
                 </div>
 
-                {/* <AutoComplete value='11' fetchSuggestions={handleFetch}></AutoComplete> */}
+                <AutoComplete value='11' fetchSuggestions={handleFetch}></AutoComplete>
                 <Input style={{ width: '200px' }} icon='cocktail'></Input>
                 <Alert title='试试' type='primary' animation='zoom-in-top'></Alert>
                 {/* <Icon icon='coffee' theme='danger' size='10x'></Icon> */}
