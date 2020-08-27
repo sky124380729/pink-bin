@@ -26,6 +26,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 import Upload from './components/Upload/upload'
 
+import Progress from './components/Progress/progress'
+
 // import Icon from './components/Icon/icon'
 library.add(fas)
 
@@ -62,10 +64,12 @@ const App: React.FC = () => {
     }
     return (
         <div className='App'>
+            {/* <Progress percent={60}></Progress> */}
             <header className='App-header'>
                 <div style={{ width: '300px', marginBottom: '20px' }}>
                     <Upload
-                        action='https://jsonplaceholder.typicode.com/posts'
+                        // action='https://jsonplaceholder.typicode.com/posts'
+                        action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
                         onChange={handleFileChange}
                         onRemove={(file) => {
                             console.log(file)
