@@ -22,9 +22,15 @@ export interface UploadProps {
     onError?: (err: any, file: File) => void
     onChange?: (file: File) => void
     onRemove?: (file: UploadFile) => void
+    headers?: { [key: string]: any }
+    name?: string
+    data?: { [key: string]: any }
+    withCredentials?: boolean
+    accept?: string
+    multiple?: boolean
 }
 const Upload: FC<UploadProps> = (props) => {
-    const { action, defaultFileList, beforeUpload, onProgress, onSuccess, onError, onChange, onRemove } = props
+    const { action, defaultFileList, beforeUpload, onProgress, onSuccess, onError, onChange, onRemove, name, headers, data, withCredentials, accept, multiple, children } = props
     const fileInput = useRef<HTMLInputElement>(null)
     const [fileList, setFileList] = useState<UploadFile[]>(defaultFileList || [])
     const updateFileList = (uploadFile: UploadFile, updateObj: Partial<UploadFile>) => {
@@ -84,14 +90,24 @@ const Upload: FC<UploadProps> = (props) => {
             percent: 0,
             raw: file
         }
-        setFileList([_file, ...fileList])
+        // setFileList([_file, ...fileList])
+        setFileList((prevList) => {
+            return [_file, ...prevList]
+        })
         const formData = new FormData()
-        formData.append(file.name, file)
+        formData.append(name || 'file', file)
+        if (data) {
+            Object.keys(data).forEach((key) => {
+                formData.append(key, data[key])
+            })
+        }
         axios
             .post(action, formData, {
                 headers: {
+                    ...headers,
                     'Content-Type': 'multipart/form-data'
                 },
+                withCredentials,
                 onUploadProgress: (e: ProgressEvent<EventTarget>) => {
                     const percentage = Math.round((e.loaded * 100) / e.total) || 0
                     if (percentage < 100) {
@@ -124,13 +140,17 @@ const Upload: FC<UploadProps> = (props) => {
 
     return (
         <div className='viking-upload-component'>
-            <Button btnType='primary' onClick={handleClick}>
-                Upload File
-            </Button>
-            <input className='viking-file-input' ref={fileInput} onChange={handleFileChange} style={{ display: 'none' }} type='file' />
+            <div className='viking-upload-input' onClick={handleClick} style={{ display: 'inline-block' }}>
+                {children}
+                <input className='viking-file-input' ref={fileInput} accept={accept} multiple={multiple} onChange={handleFileChange} style={{ display: 'none' }} type='file' />
+            </div>
             <UploadList fileList={fileList} onRemove={handleRemove} />
         </div>
     )
+}
+
+Upload.defaultProps = {
+    name: 'file'
 }
 
 export default Upload

@@ -70,11 +70,14 @@ const App: React.FC = () => {
                     <Upload
                         // action='https://jsonplaceholder.typicode.com/posts'
                         action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
+                        multiple
                         onChange={handleFileChange}
                         onRemove={(file) => {
                             console.log(file)
                         }}
-                    ></Upload>
+                    >
+                        <Button btnType='primary'>Upload File</Button>
+                    </Upload>
                 </div>
 
                 <div style={{ display: 'flex' }}>
