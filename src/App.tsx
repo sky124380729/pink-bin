@@ -23,6 +23,7 @@ import Select, { Option } from './components/Select/select'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
+import Icon from './components/Icon/icon'
 import axios from 'axios'
 import Upload from './components/Upload/upload'
 
@@ -75,8 +76,11 @@ const App: React.FC = () => {
                         onRemove={(file) => {
                             console.log(file)
                         }}
+                        drag
                     >
-                        <Button btnType='primary'>Upload File</Button>
+                        <Icon icon='upload' size='5x' theme='secondary' />
+                        <br />
+                        <p>Drag file over to upload</p>
                     </Upload>
                 </div>
 
