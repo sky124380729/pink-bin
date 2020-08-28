@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 // import Button, { ButtonType, ButtonSize } from './components/Button/button'
 import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
@@ -10,7 +10,7 @@ import SubMenu from './components/Menu/subMenu'
 // import SubMenu from './components/Menx/subMenu'
 
 import Tabs from './components/Tabs/tabs'
-import TabItem from './components/Tabs/tabItem'
+import TabItem from './components/Tabs/tabPane'
 
 import Transiton from './components/Transition/transition'
 import Button from './components/Button/button'
@@ -24,10 +24,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import Icon from './components/Icon/icon'
-import axios from 'axios'
 import Upload from './components/Upload/upload'
 
-import Progress from './components/Progress/progress'
+// import Progress from './components/Progress/progress'
 
 // import Icon from './components/Icon/icon'
 library.add(fas)
@@ -48,18 +47,6 @@ const App: React.FC = () => {
     const handleChange = (item: any) => {
         console.log(item)
     }
-
-    const [title, setTitle] = useState('')
-    useEffect(() => {
-        axios
-            .get('https://jsonplaceholder.typicode.com/posts/1', {
-                headers: {},
-                responseType: 'json'
-            })
-            .then((resp) => {
-                setTitle(resp.data.title)
-            })
-    })
     const handleFileChange = (file: File) => {
         console.log(file)
     }

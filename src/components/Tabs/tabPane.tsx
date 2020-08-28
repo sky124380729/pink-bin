@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
 import { TabContext } from './tabs'
-export interface TabItemProps {
+export interface TabPaneProps {
     index?: number
     disabled?: boolean
     label: string
 }
 
-const TabItem: React.FC<TabItemProps> = (props) => {
+const TabPane: React.FC<TabPaneProps> = (props) => {
     const context = useContext(TabContext)
     const { children, index } = props
     const classes = classNames('tab-item')
@@ -18,6 +18,6 @@ const TabItem: React.FC<TabItemProps> = (props) => {
     )
 }
 
-TabItem.displayName = 'TabItem'
+TabPane.displayName = 'TabPane'
 
-export default TabItem
+export default TabPane

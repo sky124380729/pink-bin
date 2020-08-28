@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react'
 import classNames from 'classnames'
-import { TabItemProps } from './tabItem'
+import { TabPaneProps } from './tabPane'
 
 type TabType = 'line' | 'card'
 type SelectFun = (index: number) => void
@@ -30,7 +30,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
     }
     const renderTabList = () => {
         return React.Children.map(children, (child, index) => {
-            const childElement = child as React.FunctionComponentElement<TabItemProps>
+            const childElement = child as React.FunctionComponentElement<TabPaneProps>
             const { label, disabled } = childElement.props
             const classes = classNames('tabs-tab', {
                 'is-active': activeIndex === index,
@@ -45,14 +45,14 @@ const Tabs: React.FC<TabsProps> = (props) => {
     }
     const renderChildren = () => {
         return React.Children.map(children, (child, index) => {
-            const childElement = child as React.FunctionComponentElement<TabItemProps>
+            const childElement = child as React.FunctionComponentElement<TabPaneProps>
             const { displayName } = childElement.type
-            if (displayName === 'TabItem') {
+            if (displayName === 'TabPane') {
                 return React.cloneElement(childElement, {
                     index
                 })
             } else {
-                console.error('Tabs children show be TabItem Element')
+                console.error('Tabs children show be TabPane Element')
             }
         })
     }

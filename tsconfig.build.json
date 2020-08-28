@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        // 输出目录
+        "outDir": "build",
+        // 模块化的类型
+        "module": "esnext",
+        // 输出构建目标
+        "target": "ES5",
+        // 生成.d.ts类型的文件，引入库的时候就可以获得TS提示和类型检查
+        "declaration": true,
+        // React.createElement的缩写，JSX编译出来即React.createElement
+        "jsx": "react"
+    },
+    "include":[
+        "src"
+    ],
+    // ※是glob,两个※代表任意长度
+    "exclude": [
+        "src/**/*.test.tsx",
+        "src/**/*.stories.tsx"
+    ]
+}
