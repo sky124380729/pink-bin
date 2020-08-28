@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         // 输出目录
-        "outDir": "build",
+        "outDir": "dist",
         // 模块化的类型
         "module": "esnext",
         // 输出构建目标
