@@ -9,7 +9,11 @@
         // 生成.d.ts类型的文件，引入库的时候就可以获得TS提示和类型检查
         "declaration": true,
         // React.createElement的缩写，JSX编译出来即React.createElement
-        "jsx": "react"
+        "jsx": "react",
+        // 使用node的方式导入包
+        "moduleResolution": "node",
+        // 开启默认导入的方式
+        "allowSyntheticDefaultImports": true
     },
     "include":[
         "src"
